@@ -39,6 +39,8 @@ function crearPelicula() {
   //validar los datos
   const resumen = resumenValidaciones(titulo.value);
   //si los datos son validos?
+  //esta funcion decide si muestra o no el mensaj de error
+  mostrarMensajeError(resumen)
   if (resumen.length === 0) {
     // crear pelicula
     const peliculaEjemplo = new Pelicula(
@@ -52,13 +54,17 @@ function crearPelicula() {
       "Estados Unidos",
       ["Marlon Brando", "Al Pacino", "James Caan"]
     );
-
     //agregar la Pelicula en el arreglo de peliculas
     //guardar el array en localstorage
     console.log(peliculaEjemplo);
-  }else{
-    //mostrar un mensaje de error al usuario
-    console.log('aqui ocurrieron errores que tengo que mostrar')
   }
+}
 
+function mostrarMensajeError(resumen){
+  if(resumen.length > 0){
+    alert.className = 'alert alert-danger mt-3';
+    alert.innerHTML = resumen
+  }else{
+    alert.className = 'alert alert-danger mt-3 d-none';
+  }
 }
