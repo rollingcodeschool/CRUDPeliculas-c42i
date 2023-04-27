@@ -48,7 +48,7 @@ function crearPelicula() {
   mostrarMensajeError(resumen);
   if (resumen.length === 0) {
     // crear pelicula
-    const peliculaEjemplo = new Pelicula(
+    const peliculaNueva = new Pelicula(
       undefined,
       titulo.value,
       descripcion.value,
@@ -60,8 +60,11 @@ function crearPelicula() {
       reparto.value
     );
     //agregar la Pelicula en el arreglo de peliculas
+    listaPeliculas.push(peliculaNueva);
     //guardar el array en localstorage
-    console.log(peliculaEjemplo);
+    guardarEnLocalstorage();
+    console.log(peliculaNueva);
+    limpiarFormulario();
   }
 }
 
@@ -72,4 +75,12 @@ function mostrarMensajeError(resumen) {
   } else {
     alert.className = "alert alert-danger mt-3 d-none";
   }
+}
+
+function guardarEnLocalstorage(){
+  localStorage.setItem('listaPeliculas', JSON.stringify(listaPeliculas));
+}
+
+function limpiarFormulario(){
+  formularioPeliculas.reset();
 }
