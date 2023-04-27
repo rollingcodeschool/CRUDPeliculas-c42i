@@ -37,7 +37,7 @@ function prepararFormularioPelicula(e) {
 
 function crearPelicula() {
   //validar los datos
-  const resumen = resumenValidaciones(titulo.value, descripcion.value, imagen.value);
+  const resumen = resumenValidaciones(titulo.value, descripcion.value, imagen.value, genero.value);
   //si los datos son validos?
   //esta funcion decide si muestra o no el mensaj de error
   mostrarMensajeError(resumen)

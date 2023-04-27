@@ -22,9 +22,17 @@ function validarURLImagen(imagen){
   }
 }
 
+function validarGenero(genero){
+    if( genero.length > 0 && (genero === 'accion' || genero === 'drama' || genero === 'comedia' || genero === 'aventura' )){
+        return true;
+    }else{
+        return false;
+    }
+}
+
 // todo: agregar las validaciones correspondientes para la descripcion, pais, reparto, anio y duracion
 
-export function resumenValidaciones(titulo, descripcion, imagen){
+export function resumenValidaciones(titulo, descripcion, imagen, genero){
     let resumen = '';
     if(! validarCantidadCaracteres(titulo,2, 100)){
         //si no cumplio la validacion
@@ -37,6 +45,10 @@ export function resumenValidaciones(titulo, descripcion, imagen){
     if(! validarURLImagen(imagen)){
         //si no cumplio la validacion
         resumen += 'La url debe ser valida y contener una extension (.jpg,.png o .gif) <br>';
+    };
+    if(! validarGenero(genero)){
+        //si no cumplio la validacion
+        resumen += 'Debe seleccionar un genero de la lista <br>';
     };
     return resumen;
 }
