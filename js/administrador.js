@@ -20,6 +20,7 @@ let codigo = document.getElementById("codigo"),
   duracion = document.getElementById("duracion"),
   alert = document.getElementById("alerta");
 
+  
 //manejadores de eventos
 formularioPeliculas.addEventListener("submit", prepararFormularioPelicula);
 btnCrearPelicula.addEventListener("click", desplegarModalPelicula);
@@ -65,6 +66,7 @@ function crearPelicula() {
     guardarEnLocalstorage();
     console.log(peliculaNueva);
     limpiarFormulario();
+    //mostrar un mensaje intuitivo
   }
 }
 
