@@ -12,7 +12,14 @@ function validarCantidadCaracteres(texto, min, max){
 //^(http(s?):)([/|.|\w|\s|-])*\.(?:jpg|png|gif)$
 
 function validarURLImagen(imagen){
-  
+  const patron = /^(http(s?):)([/|.|\w|\s|-])*\.(?:jpg|png|gif)$/;
+  if(patron.test(imagen)){
+    console.log('la url de la imagen es valida')
+    return true;
+  }else{
+    console.log('la url de la imagen es erronea')
+    return false;
+  }
 }
 
 // todo: agregar las validaciones correspondientes para la descripcion, pais, reparto, anio y duracion
@@ -26,6 +33,10 @@ export function resumenValidaciones(titulo, descripcion, imagen){
     if(! validarCantidadCaracteres(descripcion,5, 300)){
         //si no cumplio la validacion
         resumen += 'La descripcion debe contener entre 5 y 300 caracteres <br>';
+    };
+    if(! validarURLImagen(imagen)){
+        //si no cumplio la validacion
+        resumen += 'La url debe ser valida y contener una extension (.jpg,.png o .gif) <br>';
     };
     return resumen;
 }
