@@ -132,17 +132,40 @@ function limpiarFormulario(){
 }
 
 window.borrarPelicula = (codigo)=> {
-  console.log(codigo);
-  //1 - buscar del array a donde esta el elemento que tiene este codigo
-  let posicionPelicula = listaPeliculas.findIndex((pelicula)=> pelicula.codigo === codigo);
-  //2 - borrar la pelicula del array (splice)
-  listaPeliculas.splice(posicionPelicula,1);
-  //3 - actualizar el localstorage
-  guardarEnLocalstorage()
-  //4- borrar la fila de la tabla
-  let tablaPelicula = document.getElementById('tablaPelicula');
-  tablaPelicula.removeChild(tablaPelicula.children[posicionPelicula]);
-  //5 - mostrar un cartel al usuario
+Swal.fire({
+  title: '¿Esta seguro de borrar la pelicula?',
+  text: "No puedes volver atras luego de borrar una pelicula",
+  icon: 'warning',
+  showCancelButton: true,
+  confirmButtonColor: '#3085d6',
+  cancelButtonColor: '#d33',
+  confirmButtonText: 'Borrar',
+  cancelButtonText: 'Cancelar'
+}).then((result) => {
+  console.log(result);
+  if (result.isConfirmed) {
+    //codigo cuando borro
+    console.log(codigo);
+    //1 - buscar del array a donde esta el elemento que tiene este codigo
+    let posicionPelicula = listaPeliculas.findIndex((pelicula)=> pelicula.codigo === codigo);
+    //2 - borrar la pelicula del array (splice)
+    listaPeliculas.splice(posicionPelicula,1);
+    //3 - actualizar el localstorage
+    guardarEnLocalstorage()
+    //4- borrar la fila de la tabla
+    let tablaPelicula = document.getElementById('tablaPelicula');
+    tablaPelicula.removeChild(tablaPelicula.children[posicionPelicula]);
+    //5 - mostrar un cartel al usuario
+    Swal.fire(
+      'Pelicula eliminada',
+      'La pelicula seleccionada fue borrada correctamente',
+      'success'
+    )
+    //todo: paso 6 actualizar los numeros de las filas de la tabla.
+  }
+})
+
+ 
 
 }
 
