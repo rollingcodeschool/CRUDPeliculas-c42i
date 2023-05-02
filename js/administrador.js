@@ -101,6 +101,14 @@ function crearPelicula() {
     //guardar el array en localstorage
     guardarEnLocalstorage();
     console.log(peliculaNueva);
+    //dibujar la fila en la tabla
+      crearFila(peliculaNueva, listaPeliculas.length)
+    //mostrar un mensaje
+    Swal.fire(
+      'Pelicula creada',
+      'La pelicula fue creada exitosamente',
+      'success'
+    )
     limpiarFormulario();
     //mostrar un mensaje intuitivo
   }
