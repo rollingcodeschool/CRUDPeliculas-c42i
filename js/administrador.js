@@ -130,3 +130,19 @@ function guardarEnLocalstorage(){
 function limpiarFormulario(){
   formularioPeliculas.reset();
 }
+
+window.borrarPelicula = (codigo)=> {
+  console.log(codigo);
+  //1 - buscar del array a donde esta el elemento que tiene este codigo
+  let posicionPelicula = listaPeliculas.findIndex((pelicula)=> pelicula.codigo === codigo);
+  //2 - borrar la pelicula del array (splice)
+  listaPeliculas.splice(posicionPelicula,1);
+  //3 - actualizar el localstorage
+  guardarEnLocalstorage()
+  //4- borrar la fila de la tabla
+  let tablaPelicula = document.getElementById('tablaPelicula');
+  tablaPelicula.removeChild(tablaPelicula.children[posicionPelicula]);
+  //5 - mostrar un cartel al usuario
+
+}
+
