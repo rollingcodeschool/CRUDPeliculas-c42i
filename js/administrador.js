@@ -79,6 +79,8 @@ btnCrearPelicula.addEventListener("click", desplegarModalPelicula);
 
 //funciones
 function desplegarModalPelicula() {
+  limpiarFormulario();
+  altaPelicula=true;
   modalPelicula.show();
 }
 
