@@ -23,7 +23,7 @@ function validarURLImagen(imagen){
 }
 
 function validarGenero(genero){
-    if( genero.length > 0 && (genero === 'accion' || genero === 'drama' || genero === 'comedia' || genero === 'aventura' )){
+    if( genero.length > 0 && (genero === 'Accion' || genero === 'Drama' || genero === 'Comedia' || genero === 'Aventura' )){
         return true;
     }else{
         return false;
