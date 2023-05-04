@@ -225,8 +225,20 @@ function editarPelicula() {
   //3- actualizar el localstorage
   guardarEnLocalstorage()
   //4-actualizar la fila
-
+  let tablaPelicula = document.getElementById("tablaPelicula");
+  console.log(tablaPelicula.children[posicionPelicula].children[1])
+//  let celdaTitulo =tablaPelicula.children[posicionPelicula].children[1]
+  tablaPelicula.children[posicionPelicula].children[1].innerHTML = titulo.value
+  tablaPelicula.children[posicionPelicula].children[2].children[0].innerHTML = descripcion.value
+  tablaPelicula.children[posicionPelicula].children[3].children[0].innerHTML = imagen.value
+  tablaPelicula.children[posicionPelicula].children[4].innerHTML = genero.value
   //5-mostrar un cartel al usuario
-
+  Swal.fire(
+    "Pelicula modificada",
+    "La pelicula fue modificada exitosamente",
+    "success"
+  );
   //6- limpiar el formulario y cerrar el modal
+  limpiarFormulario();
+  modalPelicula.hide();
 }
